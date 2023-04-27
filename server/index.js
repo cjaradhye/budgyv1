@@ -13,7 +13,12 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
-mongoose.connect('mongodb://localhost:27017/expenses');
+
+
+// mongoose.connect('mongodb://localhost:27017/expenses');
+
+mongoose.connect('mongodb+srv://cj_aradhye:adiswarup1@cluster0.bjmzwvw.mongodb.net/expenses');
+
 const userSchema = new mongoose.Schema({
     name: String,
     password: String,
