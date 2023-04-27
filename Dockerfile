@@ -14,14 +14,22 @@ RUN npm install
 COPY . .
 
 # Build the React app
-RUN npm run build
+RUN npm start
 
-# Set the environment variable to production
-ENV NODE_ENV=production
+# # Set the environment variable to production
+# ENV NODE_ENV=production
 
 # Expose port 3100
 EXPOSE 3100
 
+WORKDIR ../server
+
+# Copy the package.json and package-lock.json files to the container
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
 # Start the server
-CMD ["node", "server.js"]
+CMD ["node", "index.js"]
 
